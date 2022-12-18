@@ -18,7 +18,7 @@ export default async function Page({
     <div className={styles.container}>
       Stats for {params.summonerName}
       <div className={styles.row}>
-        <RefreshButton summonerName={params.summonerName} value="Refresh" />
+        <RefreshButton summonerName={params.summonerName} value="Update" />
         <Button route="/">Back</Button>
       </div>
       {data && <StatTable champStats={data.champStats} summonerName={data.summonerName} matchStats={data.matchStats}/>}
