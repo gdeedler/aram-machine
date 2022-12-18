@@ -10,6 +10,6 @@ interface ButtonInterface {
 export default function Button({children, route}: ButtonInterface) {
   const router = useRouter();
   return(
-    <button onClick={() => router.push(route)} className='border rounded'>{children}</button>
+    <button onClick={() => router.push(route)}>{children}</button>
   )
 }
