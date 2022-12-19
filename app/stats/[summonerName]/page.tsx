@@ -1,7 +1,7 @@
 import Button from './button';
-import RefreshButton from './resfreshButton';
 import styles from './styles.module.css';
 import StatTable from './statTable';
+import SummonerStats from './summonerStats';
 
 export default async function Page({
   params,
@@ -9,19 +9,18 @@ export default async function Page({
   params: { summonerName: string };
 }) {
   const res = await fetch(`http://localhost:3010/stats/${params.summonerName}`);
-  let data: SummonerStats | null = null;
-  if (res.status === 200) {
-    data = await res.json();
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
   }
+
+  let data: SummonerStats = await res.json();
 
   return (
     <div className={styles.container}>
-      Stats for {params.summonerName}
-      <div className={styles.row}>
-        <RefreshButton summonerName={params.summonerName} value="Update" />
-        <Button route="/">Back</Button>
+      <div className={styles.profileStatCol}>
+        <SummonerStats matchStats={data.matchStats} />
       </div>
-      {data && <StatTable champStats={data.champStats} summonerName={data.summonerName} matchStats={data.matchStats}/>}
+      <StatTable champStats={data.champStats} />
     </div>
   );
 }

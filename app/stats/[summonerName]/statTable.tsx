@@ -5,7 +5,7 @@ import Image from 'next/image';
 import icons from '../../../lib/icons';
 import { useState } from 'react';
 
-export default function StatTable({ champStats }: SummonerStats) {
+export default function StatTable({ champStats }: TableStats) {
 
   const [sortMethod, setSortMethod] = useState<SortMethod>('gamesPlayed')
   const [isDescending, setIsDescending] = useState(true);
@@ -100,4 +100,8 @@ function sortStats (champStats: [ChampStats], sortMethod: SortMethod, descending
     return champStats.sort((a, b) => a.winrate - b.winrate)
   }
   return champStats;
+}
+
+interface TableStats {
+  champStats: [ChampStats],
 }

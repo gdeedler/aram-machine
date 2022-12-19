@@ -10,17 +10,19 @@ interface ChampStats {
   winrate: number,
   pentaKills: number,
 }
+
+interface MatchStats {
+  summonerName: string,
+  puuid: string,
+  games: number,
+  wins: number,
+  losses: number,
+  winrate: number,
+  pentaKills: number,
+}
 interface SummonerStats {
   summonerName: string,
-  matchStats: {
-    summonerName: string,
-    puuid: string,
-    games: number,
-    wins: number,
-    losses: number,
-    winrate: number,
-    pentaKills: number,
-  }
+  matchStats: MatchStats,
   champStats: [
     ChampStats
   ]
