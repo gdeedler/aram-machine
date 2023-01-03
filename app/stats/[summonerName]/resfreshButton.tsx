@@ -15,7 +15,7 @@ export default function RefreshButton({ summonerName}: RefreshButton) {
   async function handleClick() {
     setIsUpdating(true);
     const res = await fetch(
-      `http://localhost:3010/stats/${summonerName}/refresh`
+      `${process.env.API_URL}/stats/${summonerName}/refresh`
     );
     if (res.ok) {
       router.refresh();

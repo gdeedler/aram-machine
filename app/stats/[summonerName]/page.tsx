@@ -9,7 +9,7 @@ export default async function Page({
 }: {
   params: { summonerName: string };
 }) {
-  const res = await fetch(`http://localhost:3010/stats/${params.summonerName}`);
+  const res = await fetch(`${process.env.API_URL}/stats/${params.summonerName}`);
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
