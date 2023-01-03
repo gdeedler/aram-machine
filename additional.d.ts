@@ -20,10 +20,21 @@ interface MatchStats {
   winrate: number,
   pentaKills: number,
 }
+
+interface AllyStats {
+  summonerName: string,
+  games: number,
+  wins: number,
+  losses: number,
+  winrate: number,
+}
 interface SummonerStats {
   summonerName: string,
   matchStats: MatchStats,
   champStats: [
     ChampStats
+  ]
+  allyStats: [
+    AllyStats
   ]
 }

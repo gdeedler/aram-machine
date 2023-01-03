@@ -2,6 +2,7 @@ import Button from './button';
 import styles from './styles.module.css';
 import StatTable from './statTable';
 import SummonerStats from './summonerStats';
+import AllyStats from './allyStats';
 
 export default async function Page({
   params,
@@ -19,6 +20,7 @@ export default async function Page({
     <div className={styles.container}>
       <div className={styles.profileStatCol}>
         <SummonerStats matchStats={data.matchStats} />
+        <AllyStats allyStats={data.allyStats}/>
       </div>
       <StatTable champStats={data.champStats} />
     </div>

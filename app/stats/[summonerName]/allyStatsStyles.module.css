@@ -1,0 +1,17 @@
+.allyContainer {
+  font-weight: lighter;
+  font-size: .9em;
+  background-color: rgb(43, 36, 63);
+  border-radius: 5px;
+  padding: .2em;
+  margin-top: .5em;
+}
+
+.allyRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+.allyRowHead {
+  font-weight: bolder;
+}

@@ -12,6 +12,7 @@ export default function StatTable({ champStats }: TableStats) {
 
   const sortedStats = sortStats(champStats, sortMethod, isDescending);
 
+
   function handleSortChange(newSortMethod: SortMethod) {
     if (sortMethod === newSortMethod) {
       setIsDescending(!isDescending);
