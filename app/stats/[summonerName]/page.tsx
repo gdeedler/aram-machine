@@ -9,7 +9,8 @@ export default async function Page({
 }: {
   params: { summonerName: string };
 }) {
-  const res = await fetch(`${process.env.API_URL}/stats/${params.summonerName}`);
+  const lowerCaseName = params.summonerName.toLowerCase();
+  const res = await fetch(`${process.env.API_URL}/stats/${lowerCaseName}`);
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
