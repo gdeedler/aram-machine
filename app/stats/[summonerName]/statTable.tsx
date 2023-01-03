@@ -24,49 +24,51 @@ export default function StatTable({ champStats }: TableStats) {
 
   return (
     <table className={styles.dataTable}>
-      <tr>
-        <th onClick={() => handleSortChange('gamesPlayed')}>#</th>
-        <th onClick={() => handleSortChange('champion')}>Champion</th>
-        <th onClick={() => handleSortChange('pentaKills')}>Pentakills</th>
-        <th onClick={() => handleSortChange('gamesPlayed')}>Played</th>
-        <th onClick={() => handleSortChange('winrate')}>%</th>
-      </tr>
-      {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills }, index) => (
-        <tr key={champion}>
-          <td className={styles.iconCell}>
-            {index + 1}
-            <div className={styles.championIconContainer}>
-              <Image
-                src={icons[champion]}
-                alt={champion}
-                width={50}
-                height={50}
-                className={styles.championIcon}
-              />
-            </div>
-          </td>
-          <td>{champion}</td>
-          <td>
-            {pentaKills}
-          </td>
-          <td className={styles.winLossWidget}>
-            <div className={styles.gamePillWrapper}>
-              <div className={styles.gameLossPill} />
-              <div
-                className={styles.gameWinPill}
-                style={{ width: winrate + '%' }}
-              />
-              <div className={styles.pillText}>
-                <div>{wins}W</div>
-                <div>{losses}L</div>
-              </div>
-            </div>
-          </td>
-          <td className={styles.winrate}>
-          {winrate}%
-          </td>
+      <tbody>
+        <tr>
+          <th onClick={() => handleSortChange('gamesPlayed')}>#</th>
+          <th onClick={() => handleSortChange('champion')}>Champion</th>
+          <th onClick={() => handleSortChange('pentaKills')}>Pentakills</th>
+          <th onClick={() => handleSortChange('gamesPlayed')}>Played</th>
+          <th onClick={() => handleSortChange('winrate')}>%</th>
         </tr>
-      ))}
+        {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills }, index) => (
+          <tr key={champion}>
+            <td className={styles.iconCell}>
+              {index + 1}
+              <div className={styles.championIconContainer}>
+                <Image
+                  src={icons[champion]}
+                  alt={champion}
+                  width={50}
+                  height={50}
+                  className={styles.championIcon}
+                />
+              </div>
+            </td>
+            <td>{champion}</td>
+            <td>
+              {pentaKills}
+            </td>
+            <td className={styles.winLossWidget}>
+              <div className={styles.gamePillWrapper}>
+                <div className={styles.gameLossPill} />
+                <div
+                  className={styles.gameWinPill}
+                  style={{ width: winrate + '%' }}
+                />
+                <div className={styles.pillText}>
+                  <div>{wins}W</div>
+                  <div>{losses}L</div>
+                </div>
+              </div>
+            </td>
+            <td className={styles.winrate}>
+            {winrate}%
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }

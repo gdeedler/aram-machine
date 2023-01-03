@@ -19,6 +19,8 @@ export default function SummonerStats({matchStats: {summonerName, games, wins, l
   )
 }
 
+
+
 interface StatProps {
   matchStats: MatchStats
 }
