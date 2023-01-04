@@ -9,6 +9,7 @@ interface ChampStats {
   losses: number,
   winrate: number,
   pentaKills: number,
+  order: number | undefined,
 }
 
 interface MatchStats {

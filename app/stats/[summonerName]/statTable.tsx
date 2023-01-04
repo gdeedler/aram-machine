@@ -32,10 +32,10 @@ export default function StatTable({ champStats }: TableStats) {
           <th onClick={() => handleSortChange('gamesPlayed')}>Played</th>
           <th onClick={() => handleSortChange('winrate')}>%</th>
         </tr>
-        {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills }, index) => (
-          <tr key={champion}>
+        {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order }, index) => (
+          <tr key={order}>
             <td className={styles.iconCell}>
-              {index + 1}
+              {order}
               <div className={styles.championIconContainer}>
                 <Image
                   src={icons[champion]}

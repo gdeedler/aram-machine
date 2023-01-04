@@ -17,15 +17,22 @@ export default async function Page({
 
   let data: SummonerStats = await res.json();
 
+  const champStats = rankStats(data.champStats);
+
   return (
     <div className={styles.container}>
       <div className={styles.profileStatCol}>
         <SummonerStats matchStats={data.matchStats} />
         <AllyStats allyStats={data.allyStats}/>
       </div>
-      <StatTable champStats={data.champStats} />
+      <StatTable champStats={champStats} />
     </div>
   );
 }
 
-export const fetchCache = 'force-cache'
+function rankStats(champStats: [ChampStats]): [ChampStats] {
+  for (let i = 0; i < champStats.length; i++) {
+    champStats[i].order = i + 1;
+  }
+  return champStats;
+}
