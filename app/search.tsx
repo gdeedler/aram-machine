@@ -11,7 +11,7 @@ export default function Search() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        router.push(`/stats/${name}`);
+        router.push(`/stats/${name}/`);
       }}
     >
       <input

@@ -17,7 +17,7 @@ export default function AllyStats ({allyStats}: AllyProps) {
       </div>
       {allyStats.map(({summonerName, wins, losses, games, winrate}) => (
         <div className={styles.allyRow} key={summonerName}>
-          <Link href={`/stats/${summonerName}`}>{summonerName}</Link>
+          <Link href={`/stats/${summonerName}/`}>{summonerName}</Link>
           <div>{games}</div>
           <div>{winrate}%</div>
         </div>
