@@ -87,7 +87,7 @@
 .dataTable tr {
   background-color: rgb(43, 36, 63);
   display: grid;
-  grid-template-columns: 2fr 5fr 3fr 3fr 1fr;
+  grid-template-columns: 2fr 5fr 3fr 4fr 1fr;
   align-items: center;
   justify-items: start;
   padding: .1em .2em;

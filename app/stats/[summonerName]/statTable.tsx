@@ -75,8 +75,8 @@ export default function StatTable({ champStats }: TableStats) {
 
 function sortStats (champStats: [ChampStats], sortMethod: SortMethod, descending: boolean): [ChampStats] {
   if (sortMethod === 'gamesPlayed') {
-    if (descending) return champStats.sort((a, b) => b.games - a.games)
-    return champStats.sort((a, b) => a.games - b.games)
+    if (descending) return champStats.sort((a, b) => b.order - a.order)
+    return champStats.sort((a, b) => a.order - b.order)
   }
   if (sortMethod === 'champion') {
     if (descending) return champStats.sort((a, b) => {
