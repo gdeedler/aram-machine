@@ -1,4 +1,4 @@
-import Button from './button';
+import Button from './backbutton';
 import styles from './styles.module.css';
 import StatTable from './statTable';
 import SummonerStats from './summonerStats';
