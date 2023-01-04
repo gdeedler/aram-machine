@@ -32,7 +32,7 @@ export default function StatTable({ champStats }: TableStats) {
           <th onClick={() => handleSortChange('gamesPlayed')}>Played</th>
           <th onClick={() => handleSortChange('winrate')}>%</th>
         </tr>
-        {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order }, index) => (
+        {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order, displayName }, index) => (
           <tr key={order}>
             <td className={styles.iconCell}>
               {order}
@@ -46,7 +46,7 @@ export default function StatTable({ champStats }: TableStats) {
                 />
               </div>
             </td>
-            <td>{champion}</td>
+            <td>{displayName}</td>
             <td>
               {pentaKills}
             </td>
@@ -75,8 +75,8 @@ export default function StatTable({ champStats }: TableStats) {
 
 function sortStats (champStats: [ChampStats], sortMethod: SortMethod, descending: boolean): [ChampStats] {
   if (sortMethod === 'gamesPlayed') {
-    if (descending) return champStats.sort((a, b) => b.order - a.order)
-    return champStats.sort((a, b) => a.order - b.order)
+    if (descending) return champStats.sort((a, b) => a.order - b.order)
+    return champStats.sort((a, b) => b.order - a.order)
   }
   if (sortMethod === 'champion') {
     if (descending) return champStats.sort((a, b) => {

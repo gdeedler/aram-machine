@@ -62,6 +62,7 @@ import Khazix from '../public/champion/Khazix.png';
 import Kindred from '../public/champion/Kindred.png';
 import Kled from '../public/champion/Kled.png';
 import KogMaw from '../public/champion/KogMaw.png';
+import KSante from '../public/champion/KSante.png';
 import Leblanc from '../public/champion/Leblanc.png';
 import LeeSin from '../public/champion/LeeSin.png';
 import Leona from '../public/champion/Leona.png';
@@ -225,6 +226,7 @@ export default {
   Kindred,
   Kled,
   KogMaw,
+  KSante,
   Leblanc,
   LeeSin,
   Leona,
