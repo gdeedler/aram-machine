@@ -10,7 +10,7 @@ export default async function Page({
   params: { summonerName: string };
 }) {
   const lowerCaseName = params.summonerName.toLowerCase();
-  const res = await fetch(`${process.env.API_URL}/stats/${lowerCaseName}`);
+  const res = await fetch(`${process.env.API_URL}/stats/${lowerCaseName}`, { next: { revalidate: 30 } });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
@@ -27,3 +27,5 @@ export default async function Page({
     </div>
   );
 }
+
+export const fetchCache = 'force-cache'

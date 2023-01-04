@@ -3,7 +3,6 @@
   font-size: .9em;
   background-color: rgb(43, 36, 63);
   border-radius: 5px;
-  padding: .2em;
   margin-top: .5em;
 }
 
@@ -11,7 +10,13 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  padding: .2em;
 }
 .allyRowHead {
   font-weight: bolder;
+  backdrop-filter: brightness(80%);
+}
+.allyContainerHeader {
+  font-size: .9em;
+  margin-left: .2em;
 }

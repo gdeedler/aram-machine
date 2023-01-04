@@ -1,4 +1,5 @@
 import styles from './allyStatsStyles.module.css';
+import Link from 'next/link';
 
 export default function AllyStats ({allyStats}: AllyProps) {
 
@@ -8,6 +9,7 @@ export default function AllyStats ({allyStats}: AllyProps) {
 
   return (
     <div className={styles.allyContainer}>
+      <div className={styles.allyContainerHeader}>Teammates (over 5 games)</div>
       <div className={`${styles.allyRow} ${styles.allyRowHead}`}>
         <div>Summoner</div>
         <div>Games</div>
@@ -15,7 +17,7 @@ export default function AllyStats ({allyStats}: AllyProps) {
       </div>
       {allyStats.map(({summonerName, wins, losses, games, winrate}) => (
         <div className={styles.allyRow} key={summonerName}>
-          <div>{summonerName}</div>
+          <Link href={`/stats/${summonerName}`}>{summonerName}</Link>
           <div>{games}</div>
           <div>{winrate}%</div>
         </div>
