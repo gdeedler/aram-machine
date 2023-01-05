@@ -29,7 +29,7 @@ export default function RefreshButton({ summonerName}: RefreshButton) {
 
 async function refreshData(summonerName: string, router: AppRouterInstance) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/stats/${summonerName}/refresh`
+    `${process.env.NEXT_PUBLIC_API_URL}/refresh/${summonerName}/`
   );
   if (res.ok) {
     router.refresh();

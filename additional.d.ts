@@ -14,7 +14,7 @@ interface ChampStats {
 }
 
 interface MatchStats {
-  summonerName: string,
+  summonername: string,
   puuid: string,
   games: number,
   wins: number,
@@ -24,14 +24,14 @@ interface MatchStats {
 }
 
 interface AllyStats {
-  summonerName: string,
+  summonername: string,
   games: number,
   wins: number,
   losses: number,
   winrate: number,
 }
 interface SummonerStats {
-  summonerName: string,
+  summonername: string,
   matchStats: MatchStats,
   champStats: [
     ChampStats

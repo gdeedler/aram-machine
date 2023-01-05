@@ -1,12 +1,12 @@
 import RefreshButton from './resfreshButton';
 import styles from './styles.module.css';
 
-export default function SummonerStats({matchStats: {summonerName, games, wins, losses, winrate, pentaKills}}: StatProps) {
+export default function SummonerStats({matchStats: {summonername, games, wins, losses, winrate, pentaKills}}: StatProps) {
   return (
     <div className={styles.summonerStats}>
       <div className={styles.statHeader}>
-        <span>{summonerName}</span>
-        <RefreshButton summonerName={summonerName} />
+        <span>{summonername}</span>
+        <RefreshButton summonerName={summonername} />
       </div>
       <div className={styles.statsBlock}>
         <p>Games: {games}</p>
