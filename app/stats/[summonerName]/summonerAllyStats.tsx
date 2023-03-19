@@ -1,6 +1,7 @@
 import styles from './styles.module.css';
 import SummonerStats from './summonerStats';
 import AllyStats from './allyStats';
+import { RadarChart } from '../../../components/RadarChart';
 
 export default function SummonerAllyStats ({summonerStats, allyStats}: SummonerAllyProps) {
 
@@ -8,6 +9,7 @@ export default function SummonerAllyStats ({summonerStats, allyStats}: SummonerA
     <div className={styles.profileStatCol}>
       <SummonerStats matchStats={summonerStats} />
       <AllyStats allyStats={allyStats} />
+      {/* <RadarChart/> */}
     </div>
   )
 }

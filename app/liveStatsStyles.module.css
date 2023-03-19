@@ -1,0 +1,29 @@
+.container{
+  font-size: 1.2em;
+  background-color: rgb(43, 36, 63);
+  border-radius: 5px;
+  padding: .4em;
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+  width: 350px;
+}
+.statRow{
+  display:flex;
+  justify-content: space-between;
+}
+.aram{
+  background-color: rgb(19, 22, 73);
+  padding: 0 .3em;
+  border-radius: 3px;
+}
+.classic{
+  background-color: rgb(28, 73, 19);
+  padding: 0 .3em;
+  border-radius: 3px;
+}
+.inactive{
+  background-color: rgb(51, 10, 10);
+  padding: 0 .3em;
+  border-radius: 3px;
+}
