@@ -25,6 +25,8 @@ export default async function Page() {
   )
 }
 
+export const revalidate = 60;
+
 const summonerNames = ['PepperMD', 'SpiceMD', 'SugarMD', 'CinnamonMD', 'OreganoMD', 'MintMD', 'Dusty Attic', 'HoneyMD', 'Giraffe Prism']
 
 function createParams (summonerNames: string[]) {
