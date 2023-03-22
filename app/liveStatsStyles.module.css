@@ -27,3 +27,22 @@
   padding: 0 .3em;
   border-radius: 3px;
 }
+
+.championIconContainer {
+  border-radius: 100%;
+  border: 1px solid grey;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: .5em;
+}
+
+.championIcon {
+  height: 120%;
+  width: 120%;
+  object-fit: cover;
+}
