@@ -4,7 +4,7 @@ import styles from "./liveStatsStyles.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import icons from '../lib/icons'
+import icons from "../lib/icons";
 
 export default function LiveStats() {
   const [liveStats, setLiveStats] = useState<LiveStat[]>([]);
@@ -49,13 +49,15 @@ export default function LiveStats() {
       {classicPlayers.map(({ summonerName, gameMode, champion }) => (
         <div key={summonerName} className={styles.statRow}>
           <Link href={`/stats/${summonerName}`}>{summonerName}</Link>
-          <Image
-            src={icons[champion.id]}
-            alt={champion.id}
-            width={50}
-            height={50}
-            className={styles.championIcon}
-          />
+          <div className={styles.championIconContainer}>
+            <Image
+              src={icons[champion.id]}
+              alt={champion.id}
+              width={50}
+              height={50}
+              className={styles.championIcon}
+            />
+          </div>
           <span className={styles.classic}>SR</span>
         </div>
       ))}
@@ -96,8 +98,8 @@ interface LiveStat {
   gameMode: string;
   champion: {
     name: string;
-    id: ChampionNames
-  }
+    id: ChampionNames;
+  };
 }
 interface LiveStatsProps {
   liveStats: LiveStat[];
