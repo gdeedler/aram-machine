@@ -82,9 +82,11 @@
   border-collapse: collapse;
   border-radius: .3em;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
 }
-.dataTable tr {
+.dataTableRow {
   background-color: rgb(43, 36, 63);
   display: grid;
   grid-template-columns: 2fr 5fr 3fr 4fr 1fr;
@@ -104,6 +106,11 @@
   justify-self:end;
 }
 .dataTable th {
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+}
+.dataTableHeader {
   cursor: pointer;
   width: 100%;
   text-align: start;
@@ -160,9 +167,6 @@
   cursor: pointer;
 }
 
-.championRow {
-  cursor: pointer;
-}
 .detailedStats {
   transition: height .5s;
   overflow: hidden;
