@@ -9,6 +9,8 @@ export default function StatTable({ champStats }: TableStats) {
 
   const [sortMethod, setSortMethod] = useState<SortMethod>('gamesPlayed')
   const [isDescending, setIsDescending] = useState(true);
+  const [selectedChampion, setSelectedChampion] = useState<string>()
+  const [detailedStats, setDetailedStats] = useState({})
 
   const sortedStats = sortStats(champStats, sortMethod, isDescending);
 
@@ -22,6 +24,23 @@ export default function StatTable({ champStats }: TableStats) {
     setIsDescending(true);
   }
 
+  function handleRowClick(champion: ChampionNames) {
+    if(detailedStats[champion]) {
+      const stats = {...detailedStats}
+      stats[champion] = 0
+      setDetailedStats(stats)
+    } else {
+      const stats = {...detailedStats}
+      stats[champion] = 1
+      setDetailedStats(stats)
+      setTimeout(() => {
+        const stats = {...detailedStats}
+        stats[champion] = 100
+        setDetailedStats(stats)
+      }, 5)
+    }
+  }
+
   return (
     <table className={styles.dataTable}>
       <tbody>
@@ -33,40 +52,52 @@ export default function StatTable({ champStats }: TableStats) {
           <th onClick={() => handleSortChange('winrate')}>%</th>
         </tr>
         {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order, displayName }, index) => (
-          <tr key={order}>
-            <td className={styles.iconCell}>
-              {order}
-              <div className={styles.championIconContainer}>
-                <Image
-                  src={icons[champion]}
-                  alt={champion}
-                  width={50}
-                  height={50}
-                  className={styles.championIcon}
-                />
-              </div>
-            </td>
-            <td>{displayName}</td>
-            <td>
-              {pentaKills}
-            </td>
-            <td className={styles.winLossWidget}>
-              <div className={styles.gamePillWrapper}>
-                <div className={styles.gameLossPill} />
-                <div
-                  className={styles.gameWinPill}
-                  style={{ width: winrate + '%' }}
-                />
-                <div className={styles.pillText}>
-                  <div>{wins}W</div>
-                  <div>{losses}L</div>
+          <>
+            <tr
+              className={styles.championRow}
+              key={champion}
+              onClick={() => handleRowClick(champion)}>
+              <td className={styles.iconCell}>
+                {order}
+                <div className={styles.championIconContainer}>
+                  <Image
+                    src={icons[champion]}
+                    alt={champion}
+                    width={50}
+                    height={50}
+                    className={styles.championIcon}
+                  />
                 </div>
-              </div>
-            </td>
-            <td className={styles.winrate}>
-            {winrate}%
-            </td>
-          </tr>
+              </td>
+              <td>{displayName}</td>
+              <td>
+                {pentaKills}
+              </td>
+              <td className={styles.winLossWidget}>
+                <div className={styles.gamePillWrapper}>
+                  <div className={styles.gameLossPill} />
+                  <div
+                    className={styles.gameWinPill}
+                    style={{ width: winrate + '%' }}
+                  />
+                  <div className={styles.pillText}>
+                    <div>{wins}W</div>
+                    <div>{losses}L</div>
+                  </div>
+                </div>
+              </td>
+              <td className={styles.winrate}>
+              {winrate}%
+              </td>
+            </tr>
+            <div
+              className={styles.detailedStats}
+              style={{
+                height: detailedStats[champion] || 1
+              }}>
+              test
+            </div>
+          </>
         ))}
       </tbody>
     </table>
