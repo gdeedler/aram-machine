@@ -42,21 +42,20 @@ export default function StatTable({ champStats }: TableStats) {
   }
 
   return (
-    <table className={styles.dataTable}>
-      <tbody>
-        <tr>
-          <th onClick={() => handleSortChange('gamesPlayed')}>#</th>
-          <th onClick={() => handleSortChange('champion')}>Champion</th>
-          <th onClick={() => handleSortChange('pentaKills')}>Pentakills</th>
-          <th onClick={() => handleSortChange('gamesPlayed')}>Played</th>
-          <th onClick={() => handleSortChange('winrate')}>%</th>
-        </tr>
+    <div className={styles.dataTable}>
+        <div className={styles.dataTableRow}>
+          <div className={styles.dataTableHeader} onClick={() => handleSortChange('gamesPlayed')}>#</div>
+          <div className={styles.dataTableHeader} onClick={() => handleSortChange('champion')}>Champion</div>
+          <div className={styles.dataTableHeader} onClick={() => handleSortChange('pentaKills')}>Pentakills</div>
+          <div className={styles.dataTableHeader} onClick={() => handleSortChange('gamesPlayed')}>Played</div>
+          <div className={styles.dataTableHeader} onClick={() => handleSortChange('winrate')}>%</div>
+        </div>
         {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order, displayName }, index) => (
-            <tr
-              className={styles.championRow}
+            <div
+              className={styles.dataTableRow}
               key={champion}
               onClick={() => handleRowClick(champion)}>
-              <td className={styles.iconCell}>
+              <div className={styles.iconCell}>
                 {order}
                 <div className={styles.championIconContainer}>
                   <Image
@@ -67,12 +66,12 @@ export default function StatTable({ champStats }: TableStats) {
                     className={styles.championIcon}
                   />
                 </div>
-              </td>
-              <td>{displayName}</td>
-              <td>
+              </div>
+              <div>{displayName}</div>
+              <div>
                 {pentaKills}
-              </td>
-              <td className={styles.winLossWidget}>
+              </div>
+              <div className={styles.winLossWidget}>
                 <div className={styles.gamePillWrapper}>
                   <div className={styles.gameLossPill} />
                   <div
@@ -84,14 +83,13 @@ export default function StatTable({ champStats }: TableStats) {
                     <div>{losses}L</div>
                   </div>
                 </div>
-              </td>
-              <td className={styles.winrate}>
+              </div>
+              <div className={styles.winrate}>
               {winrate}%
-              </td>
-            </tr>
+              </div>
+            </div>
         ))}
-      </tbody>
-    </table>
+    </div>
   );
 }
 
