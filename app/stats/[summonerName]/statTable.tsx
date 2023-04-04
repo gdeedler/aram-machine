@@ -52,7 +52,6 @@ export default function StatTable({ champStats }: TableStats) {
           <th onClick={() => handleSortChange('winrate')}>%</th>
         </tr>
         {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order, displayName }, index) => (
-          <>
             <tr
               className={styles.championRow}
               key={champion}
@@ -90,14 +89,6 @@ export default function StatTable({ champStats }: TableStats) {
               {winrate}%
               </td>
             </tr>
-            <div
-              className={styles.detailedStats}
-              style={{
-                height: detailedStats[champion] || 1
-              }}>
-              test
-            </div>
-          </>
         ))}
       </tbody>
     </table>
