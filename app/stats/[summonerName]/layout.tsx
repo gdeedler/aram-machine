@@ -8,8 +8,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className={styles.pageContainer}>
       <div className={styles.pageHeader}>
         <Link href={"/"} className={styles.logo}>ARAM MACHINE</Link>
-        <Search />
-        <BackButton>Back</BackButton>
+        <div className={styles.search}>
+          <Search />
+          <BackButton>Back</BackButton>
+        </div>
       </div>
       {children}
     </div>
