@@ -3,14 +3,15 @@
 import styles from './styles.module.css';
 import Image from 'next/image';
 import icons from '../../../lib/icons';
+import ChampStats from './champStats';
 import { useState } from 'react';
 
-export default function StatTable({ champStats }: TableStats) {
+export default function StatTable({ champStats, summonerName }: TableStats) {
 
   const [sortMethod, setSortMethod] = useState<SortMethod>('gamesPlayed')
   const [isDescending, setIsDescending] = useState(true);
   const [selectedChampion, setSelectedChampion] = useState<string>()
-  const [detailedStats, setDetailedStats] = useState({})
+  const [detailedStats, setDetailedStats] = useState<DetailedStats>({})
 
   const sortedStats = sortStats(champStats, sortMethod, isDescending);
 
@@ -35,7 +36,7 @@ export default function StatTable({ champStats }: TableStats) {
       setDetailedStats(stats)
       setTimeout(() => {
         const stats = {...detailedStats}
-        stats[champion] = 100
+        stats[champion] = 250
         setDetailedStats(stats)
       }, 5)
     }
@@ -51,41 +52,49 @@ export default function StatTable({ champStats }: TableStats) {
           <div className={styles.dataTableHeader} onClick={() => handleSortChange('winrate')}>%</div>
         </div>
         {sortedStats.map(({ champion, games, wins, losses, winrate, pentaKills, order, displayName }, index) => (
-            <div
-              className={styles.dataTableRow}
-              key={champion}
-              onClick={() => handleRowClick(champion)}>
-              <div className={styles.iconCell}>
-                {order}
-                <div className={styles.championIconContainer}>
-                  <Image
-                    src={icons[champion]}
-                    alt={champion}
-                    width={50}
-                    height={50}
-                    className={styles.championIcon}
-                  />
-                </div>
-              </div>
-              <div>{displayName}</div>
-              <div>
-                {pentaKills}
-              </div>
-              <div className={styles.winLossWidget}>
-                <div className={styles.gamePillWrapper}>
-                  <div className={styles.gameLossPill} />
-                  <div
-                    className={styles.gameWinPill}
-                    style={{ width: winrate + '%' }}
-                  />
-                  <div className={styles.pillText}>
-                    <div>{wins}W</div>
-                    <div>{losses}L</div>
+            <div key={champion}>
+              <div
+                className={styles.dataTableRow}
+                onClick={() => handleRowClick(champion)}>
+                <div className={styles.iconCell}>
+                  {order}
+                  <div className={styles.championIconContainer}>
+                    <Image
+                      src={icons[champion]}
+                      alt={champion}
+                      width={50}
+                      height={50}
+                      className={styles.championIcon}
+                    />
                   </div>
                 </div>
+                <div>{displayName}</div>
+                <div>
+                  {pentaKills}
+                </div>
+                <div className={styles.winLossWidget}>
+                  <div className={styles.gamePillWrapper}>
+                    <div className={styles.gameLossPill} />
+                    <div
+                      className={styles.gameWinPill}
+                      style={{ width: winrate + '%' }}
+                    />
+                    <div className={styles.pillText}>
+                      <div>{wins}W</div>
+                      <div>{losses}L</div>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.winrate}>
+                {winrate}%
+                </div>
               </div>
-              <div className={styles.winrate}>
-              {winrate}%
+              <div
+              className={styles.detailedStats}
+                style={{
+                height: detailedStats[champion] || 0
+              }}>
+                {!!detailedStats[champion] && <ChampStats summonerName={summonerName} champName={champion}/>}
               </div>
             </div>
         ))}
@@ -127,4 +136,5 @@ function sortStats (champStats: [ChampStats], sortMethod: SortMethod, descending
 
 interface TableStats {
   champStats: [ChampStats],
+  summonerName: string
 }

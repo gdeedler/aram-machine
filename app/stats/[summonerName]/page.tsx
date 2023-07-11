@@ -30,7 +30,7 @@ export default async function Page({
         summonerStats={summonerData.matchStats}
         allyStats={summonerData.allyStats}
       />
-      <StatTable champStats={cleanData(data)} />
+      <StatTable champStats={cleanData(data)} summonerName={params.summonerName} />
     </div>
   );
 }

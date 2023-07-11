@@ -40,3 +40,7 @@ interface SummonerStats {
     AllyStats
   ]
 }
+
+interface DetailedStats {
+  [key: string]: number | undefined
+}

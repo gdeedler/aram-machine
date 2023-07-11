@@ -21,8 +21,8 @@ export default function RefreshButton({ summonerName}: RefreshButton) {
 
   return (
     <span className={styles.updateButton}>
+      {isUpdating && <span>Updating... </span>}
       <button onClick={handleClick}>Update</button>
-      {isUpdating && <span>Summoner data is updating...</span>}
     </span>
   );
 }
