@@ -17,7 +17,7 @@ export default async function Page({
   let data: [ChampStats] = await res.json();
 
   const summonerRes = await fetch(
-    `${process.env.API_URL}/summonerstats/${params.summonerName}`
+    `${process.env.API_URL}/summonerstats/${params.summonerName}`, { next: { revalidate: 120 } }
   );
   if (!res.ok) {
     throw new Error('Failed to fetch summoner stats');
