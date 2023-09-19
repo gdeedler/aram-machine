@@ -3,7 +3,7 @@
 import styles from './styles.module.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 interface RefreshButton {
   summonerName: string,
