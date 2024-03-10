@@ -12,8 +12,9 @@ export default function StatTable({ champStats, summonerName }: TableStats) {
   const [isDescending, setIsDescending] = useState(true);
   const [selectedChampion, setSelectedChampion] = useState<string>()
   const [detailedStats, setDetailedStats] = useState<DetailedStats>({})
+  const [champSearch, setChampSearch] = useState<string>('')
 
-  const sortedStats = sortStats(champStats, sortMethod, isDescending);
+  const sortedStats = sortStats(champStats, sortMethod, isDescending, champSearch);
 
 
   function handleSortChange(newSortMethod: SortMethod) {
@@ -46,7 +47,15 @@ export default function StatTable({ champStats, summonerName }: TableStats) {
     <div className={styles.dataTable}>
         <div className={styles.dataTableRow}>
           <div className={styles.dataTableHeader} onClick={() => handleSortChange('gamesPlayed')}>#</div>
-          <div className={styles.dataTableHeader} onClick={() => handleSortChange('champion')}>Champion</div>
+          <div className={styles.dataTableHeader}>
+            <p onClick={() => handleSortChange('champion')}>Champion</p>
+            <input
+              type="text"
+              value={champSearch}
+              onChange={(e) => setChampSearch(e.target.value)}
+              className={styles.champSearch}
+              placeholder="Search..."/>
+          </div>
           <div className={styles.dataTableHeader} onClick={() => handleSortChange('pentaKills')}>Pentakills</div>
           <div className={styles.dataTableHeader} onClick={() => handleSortChange('gamesPlayed')}>Played</div>
           <div className={styles.dataTableHeader} onClick={() => handleSortChange('winrate')}>%</div>
@@ -102,7 +111,11 @@ export default function StatTable({ champStats, summonerName }: TableStats) {
   );
 }
 
-function sortStats (champStats: [ChampStats], sortMethod: SortMethod, descending: boolean): [ChampStats] {
+function sortStats (champStats: ChampStats[], sortMethod: SortMethod, descending: boolean, champSearch: string): ChampStats[] {
+  if(champSearch && champStats.length > 0) {
+    champStats = champStats.filter(champ =>
+      champ.displayName.replace(/\W/ig, '').toLowerCase().includes(champSearch.replace(/\W/ig, '').toLowerCase()))
+  }
   if (sortMethod === 'gamesPlayed') {
     if (descending) return champStats.sort((a, b) => a.order - b.order)
     return champStats.sort((a, b) => b.order - a.order)
