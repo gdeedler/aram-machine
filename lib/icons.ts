@@ -160,6 +160,11 @@ import Ziggs from '../public/champion/Ziggs.png';
 import Zilean from '../public/champion/Zilean.png';
 import Zoe from '../public/champion/Zoe.png';
 import Zyra from '../public/champion/Zyra.png';
+import Milio from '../public/champion/Milio.png';
+import Naafiri from '../public/champion/Naafiri.png';
+import Hwei from '../public/champion/Hwei.png';
+import Smolder from '../public/champion/Smolder.png';
+import Briar from '../public/champion/Briar.png';
 
 export default {
   Aatrox,
@@ -324,4 +329,9 @@ export default {
   Zilean,
   Zoe,
   Zyra,
+  Milio,
+  Naafiri,
+  Hwei,
+  Smolder,
+  Briar,
 };
