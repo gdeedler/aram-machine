@@ -118,6 +118,16 @@
   cursor: pointer;
   width: 100%;
   text-align: start;
+  display: flex;
+}
+
+.champSearch {
+  width: 100%;
+  font-size: smaller;
+  background-color: rgb(32, 26, 46);
+  border-radius: 3px;
+  margin: 0 1em 0 0.5em;
+  padding: 0 0.2em;
 }
 
 .updateButton span {
